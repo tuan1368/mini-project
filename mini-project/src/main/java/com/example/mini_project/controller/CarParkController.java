@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("carparks/nearest")
+@RequestMapping("carparks")
 @Validated
 public class CarParkController {
 
@@ -24,8 +24,7 @@ public class CarParkController {
         this.carParkService = carParkService;
     }
 
-
-    @GetMapping
+    @GetMapping("/nearest")
     public ResponseEntity<Page<CarParkDto>> getNearestCarParks(
             @RequestParam @NotNull @Min(-90) @Max(90) Double latitude,
             @RequestParam @NotNull @Min(-180) @Max(180) Double longitude,
