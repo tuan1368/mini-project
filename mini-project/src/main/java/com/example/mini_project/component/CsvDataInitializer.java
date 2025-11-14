@@ -1,6 +1,6 @@
 package com.example.mini_project.component;
 
-import com.example.mini_project.carrepository.CarParkInformationRepository;
+import com.example.mini_project.repository.CarParkInformationRepository;
 import com.example.mini_project.dto.CarParkInformation;
 import com.example.mini_project.service.CoordinateConversionService;
 import com.opencsv.CSVReader;

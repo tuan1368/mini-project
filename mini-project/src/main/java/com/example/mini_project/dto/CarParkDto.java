@@ -1,41 +1,36 @@
 package com.example.mini_project.dto;
 
-public class CarParkDto {
-    private final String address;
-    private final Double latitude;
-    private final Double longitude;
-    private final Integer total_lots;
-    private final Integer available_lots;
+import lombok.Getter;
+import lombok.Setter;
 
-    public CarParkDto(String address,
-                      Double latitude,
-                      Double longitude,
-                      Integer total_lots,
-                      Integer available_lots) {
-        this.address = address;
+@Getter
+@Setter
+public class CarParkDto {
+    private String id;
+    private String name;
+    private double latitude;
+    private double longitude;
+    private int availableLots;
+
+    public CarParkDto() {}
+
+    public CarParkDto(String id, String name, double latitude, double longitude, int availableLots) {
+        this.id = id;
+        this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.total_lots = total_lots;
-        this.available_lots = available_lots;
+        this.availableLots = availableLots;
     }
 
-    public String getAddress() {
-        return address;
-    }
+    public String getId() { return id; }
+    public String getName() { return name; }
+    public double getLatitude() { return latitude; }
+    public double getLongitude() { return longitude; }
+    public int getAvailableLots() { return availableLots; }
 
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public Integer getTotal_lots() {
-        return total_lots;
-    }
-
-    public Integer getAvailable_lots() {
-        return available_lots;
-    }
+    public void setId(String id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
+    public void setAvailableLots(int availableLots) { this.availableLots = availableLots; }
 }

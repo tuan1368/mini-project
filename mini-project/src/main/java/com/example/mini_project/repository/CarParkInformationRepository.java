@@ -1,4 +1,4 @@
-package com.example.mini_project.carrepository;
+package com.example.mini_project.repository;
 
 import com.example.mini_project.dto.CarParkDto;
 import com.example.mini_project.dto.CarParkInformation;

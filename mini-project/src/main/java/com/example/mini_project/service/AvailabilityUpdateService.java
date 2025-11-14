@@ -1,6 +1,6 @@
 package com.example.mini_project.service;
 
-import com.example.mini_project.carrepository.CarParkAvailabilityRepository;
+import com.example.mini_project.repository.CarParkAvailabilityRepository;
 import com.example.mini_project.dto.CarParkAvailability;
 import com.example.mini_project.dto.availability.ApiItem;
 import com.example.mini_project.dto.availability.ApiResponse;

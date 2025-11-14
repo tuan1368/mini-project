@@ -1,23 +1,37 @@
 package com.example.mini_project.exception;
 
-import jakarta.validation.ConstraintViolationException;
+import com.example.mini_project.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.Map;
+import jakarta.validation.ConstraintViolationException;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler({ConstraintViolationException.class, MissingServletRequestParameterException.class})
-    public ResponseEntity<Object> handleValidationExceptions(Exception ex) {
-        Map<String, String> error = Map.of(
-                "error", "Bad Request",
-                "message", "Missing or invalid required parameters: latitude and longitude."
-        );
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    private static final String COMMON_MESSAGE = "Missing or invalid required parameters: latitude and longitude.";
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<ErrorResponse> handleMissing(MissingServletRequestParameterException ex) {
+        return build();
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> handleInvalid(MethodArgumentNotValidException ex) {
+        return build();
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorResponse> handleConstraint(ConstraintViolationException ex) {
+        return build();
+    }
+
+    private ResponseEntity<ErrorResponse> build() {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new ErrorResponse("Bad Request", COMMON_MESSAGE));
     }
 }
