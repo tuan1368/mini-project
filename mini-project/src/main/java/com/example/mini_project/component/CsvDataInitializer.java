@@ -49,7 +49,6 @@ public class CsvDataInitializer implements CommandLineRunner {
                 CarParkInformation info = new CarParkInformation();
                 info.setCarParkNo(carParkNo);
                 info.setAddress(address);
-                info.setLocation(wgs84Point);
                 info.setLatitude(wgs84Point.getY());
                 info.setLongitude(wgs84Point.getX());
 
